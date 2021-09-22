@@ -6,10 +6,10 @@
 function that takes principal investment, timeline, expected interest returned and returns an array of objects
 
 calculateCompoundedInterestReturns($1000, 3years, 10%) = [  
-  {start:number, interestEarned:number, start+interestEarned:number}, $1000,   0, 1000  0th year (now)
-  {start:number, interestEarned:number, start+interestEarned:number}, $1000, 100, 1100  1st year
-  {start:number, interestEarned:number, start+interestEarned:number}, $1100, 110, 1210  2nd year
-  {start:number, interestEarned:number, start+interestEarned:number}, $1210, 121, 1331  3rd year
+  { year: 'Year 0', start:number, interestEarned:number, start+interestEarned:number}, $1000,   0, 1000  0th year (now)
+  { year: 'Year 1', start:number, interestEarned:number, start+interestEarned:number}, $1000, 100, 1100  1st year
+  { year: 'Year 2', start:number, interestEarned:number, start+interestEarned:number}, $1100, 110, 1210  2nd year
+  { year: 'Year 3', start:number, interestEarned:number, start+interestEarned:number}, $1210, 121, 1331  3rd year
 ]
 
 */
@@ -20,8 +20,10 @@ export const calculateCompoundedInterestReturns = (startingAmount, yearsHolding,
   let yearEndTotal = startingAmount;
   let interestEarned;
 
+  console.log(startingAmount, yearsHolding, annualReturnPercentage);
+
   for (let i = 0; i <= yearsHolding; i++) {
-    result.push({ start: yearStartAmount, interestEarned, yearEndTotal });
+    result.push({ year: `Year ${i}`, start: yearStartAmount, interestEarned, yearEndTotal });
     if (i === yearsHolding) break;
     yearStartAmount = yearEndTotal;
     yearEndTotal = calculateAnnualSimpleInterest(yearStartAmount, annualReturnPercentage);

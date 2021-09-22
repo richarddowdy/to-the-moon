@@ -7,11 +7,11 @@ const schema = yup.object().shape({
   principal: yup.number().required(),
   duration: yup.number().required(),
   contribution: yup.number(),
-  expectedIntrest: yup.number(),
+  expectedInterest: yup.number(),
   frequency: yup.number(),
 });
 
-export default function InputForm() {
+export default function InputForm({ setInvestmentData }) {
   return (
     <>
       <h2>Form here</h2>
@@ -21,11 +21,12 @@ export default function InputForm() {
           principal: "",
           duration: "",
           contribution: "",
-          expectedIntrest: "",
+          expectedInterest: "",
           frequency: "",
         }}
-        onSubmit={async (values) => {
-          console.log(values);
+        onSubmit={(values) => {
+          setInvestmentData(values);
+          console.log("Form submitted", values);
         }}
       >
         {({ values, touched, isValid, errors, handleSubmit, handleChange, handleBlur }) => (
@@ -85,10 +86,10 @@ export default function InputForm() {
                 <Form.Label>Expected Anual Interest?</Form.Label>
                 <Form.Control
                   type="number"
-                  name="expectedIntrest"
-                  value={values.expectedIntrest}
+                  name="expectedInterest"
+                  value={values.expectedInterest}
                   onChange={handleChange}
-                  isValid={touched.expectedIntrest && !errors.expectedIntrest}
+                  isValid={touched.expectedInterest && !errors.expectedInterest}
                 />
                 <Form.Control.Feedback type="invalid">{errors.state}</Form.Control.Feedback>
               </Form.Group>
