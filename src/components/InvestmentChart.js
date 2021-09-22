@@ -5,8 +5,8 @@ export default function InvestmentChart() {
   const data = [
     {
       name: "Page A",
-      uv: 4000,
-      pv: 2400,
+      uv: 0,
+      pv: 4000,
     },
     {
       name: "Page B",

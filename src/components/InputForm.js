@@ -7,6 +7,7 @@ const schema = yup.object().shape({
   principal: yup.number().required(),
   duration: yup.number().required(),
   contribution: yup.number(),
+  expectedIntrest: yup.number(),
   frequency: yup.number(),
 });
 
