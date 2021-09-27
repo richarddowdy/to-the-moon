@@ -14,23 +14,49 @@ calculateCompoundedInterestReturns($1000, 3years, 10%) = [
 
 */
 
-export const calculateCompoundedInterestReturns = (startingAmount, yearsHolding, annualReturnPercentage) => {
+export const calculateCompoundedInterestReturns = (
+  startingAmount,
+  yearsHolding,
+  annualReturnPercentage,
+  contribution,
+  frequency
+) => {
   let result = [];
   let yearStartAmount = startingAmount;
   let yearEndTotal = startingAmount;
+  let totalContribution = 0;
   let interestEarned;
+  let totalInterestEarned = 0;
+  let annualContribution = Number(contribution) * frequency;
+  let annualTotalAfterInterest;
 
   console.log(startingAmount, yearsHolding, annualReturnPercentage);
 
   for (let i = 0; i <= yearsHolding; i++) {
-    result.push({ year: `Year ${i}`, start: yearStartAmount, interestEarned, yearEndTotal });
+    result.push({
+      year: `Year ${i}`,
+      principal: startingAmount,
+      totalContribution,
+      totalInterestEarned,
+      interestEarned,
+      yearEndTotal,
+    });
     if (i === yearsHolding) break;
     yearStartAmount = yearEndTotal;
-    yearEndTotal = calculateAnnualSimpleInterest(yearStartAmount, annualReturnPercentage);
-    interestEarned = +(yearEndTotal - yearStartAmount).toFixed(2);
+    totalContribution += annualContribution; // running total
+    annualTotalAfterInterest = calculateAnnualSimpleInterest(yearStartAmount, annualReturnPercentage);
+    yearEndTotal = annualTotalAfterInterest + annualContribution;
+    interestEarned = +(annualTotalAfterInterest - yearStartAmount).toFixed(2);
+    totalInterestEarned = +(totalInterestEarned + interestEarned).toFixed(2);
   }
+  console.log(result);
   return result;
 };
+
+// p = 1000 , c = 100@2xyearlycompounding , interest = 10% anually
+// {year: "Year 0", principal: 1000, contribution: 0, interestEarned: 0}
+// {year: "Year 1", principal: 1000, contribution: 200, interestEarned: 120, yearEndTotal: 1320}
+// {year: "Year 2", principal: 1000, contribution: 400, interestEarned: 152, yearEndTotal: 1672}
 
 /*
   Calculates annual simple interest - takes pricipal and percent interest

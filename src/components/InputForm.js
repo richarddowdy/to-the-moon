@@ -65,9 +65,12 @@ export default function InputForm({ setInvestmentData }) {
                   isValid={touched.contribution && !errors.contribution}
                 >
                   <option value={null}>None</option>
-                  <option value={1}>Once a year.</option>
+                  <option value={26}>Every two weeks.</option>
+                  <option value={24}>Twice per month.</option>
+                  <option value={12}>Once a month.</option>
+                  <option value={4}>Once per quarter.</option>
                   <option value={2}>Twice a year.</option>
-                  <option value={3}>Three times a year.</option>
+                  <option value={1}>Once a year.</option>
                 </Form.Control>
                 <Form.Control.Feedback type="invalid">{errors.state}</Form.Control.Feedback>
               </Form.Group>

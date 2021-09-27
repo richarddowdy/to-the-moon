@@ -21,12 +21,15 @@ export default function InvestmentChart({ investmentData }) {
           }`}</p>
           <BarChart width={650} height={300} data={chartData}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="year" />
+            <XAxis dataKey="year" xAxisId={0} />
+            <XAxis dataKey="year" xAxisId={1} hide />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="start" stackId="a" fill="#8884d8" />
-            <Bar dataKey="interestEarned" stackId="a" fill="#82ca9d" />
+            <Bar dataKey="yearEndTotal" name="Total" xAxisId={1} fill="black" fillOpacity={0} />
+            <Bar dataKey="principal" name="Principal" stackId="a" fill="#8884d8" />
+            <Bar dataKey="totalContribution" name="Total Contribution" stackId="a" fill="#ff0000" />
+            <Bar dataKey="totalInterestEarned" name="Total Interest Earned" stackId="a" fill="#82ca9d" />
           </BarChart>
         </>
       )}
