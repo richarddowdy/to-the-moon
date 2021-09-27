@@ -5,6 +5,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import InvestmentChart from "../components/InvestmentChart";
 import InvestmentPie from "../components/InvestmentPie";
 import { calculateCompoundedInterestReturns } from "../utils/investmentHelpers";
+import InvestmentTable from "../components/InvestmentTable";
 
 export default function Home() {
   const [investmentData, setInvestmentData] = useState(null);
@@ -28,19 +29,22 @@ export default function Home() {
       <p>
         Let's get started. Click <Link to="/test">Here</Link> to get started.
       </p>
-      <Row>
-        <Col>
+      <Container fluid>
+        <Row>
           <InputForm setInvestmentData={setInvestmentData} />
-          {/* </Col>
-        <Col> */}
-          {formattedData && <InvestmentChart chartData={formattedData} />}
-          {formattedData && (
-            <InvestmentPie
-              chartData={formattedData[formattedData.length - 1]} /* only need the last year of data for pie chart */
-            />
-          )}
-        </Col>
-      </Row>
+        </Row>
+        <Row>
+          <Col>{formattedData && <InvestmentChart chartData={formattedData} />}</Col>
+          <Col>
+            {formattedData && (
+              <InvestmentPie
+                chartData={formattedData[formattedData.length - 1]} /* only need the last year of data for pie chart */
+              />
+            )}
+          </Col>
+        </Row>
+        <Row>{formattedData && <InvestmentTable chartData={formattedData} />}</Row>
+      </Container>
     </>
   );
 }

@@ -45,7 +45,7 @@ export const calculateCompoundedInterestReturns = (
     yearStartAmount = yearEndTotal;
     totalContribution += annualContribution; // running total
     annualTotalAfterInterest = calculateAnnualSimpleInterest(yearStartAmount, annualReturnPercentage);
-    yearEndTotal = annualTotalAfterInterest + annualContribution;
+    yearEndTotal = +(annualTotalAfterInterest + annualContribution).toFixed(2);
     interestEarned = +(annualTotalAfterInterest - yearStartAmount).toFixed(2);
     totalInterestEarned = +(totalInterestEarned + interestEarned).toFixed(2);
   }

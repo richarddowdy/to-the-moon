@@ -33,7 +33,7 @@ export default function InvestmentPie({ chartData }) {
   return (
     <>
       {pieChartData && (
-        <PieChart width={730} height={250}>
+        <PieChart width={400} height={250}>
           <Pie
             data={pieChartData}
             dataKey="value"
