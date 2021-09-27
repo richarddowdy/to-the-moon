@@ -14,7 +14,6 @@ export default function InvestmentTable({ chartData }) {
           <thead>
             <tr>
               <th>Year</th>
-              <th>Principal</th>
               <th>Total Contribution</th>
               <th>Total Interest Earned</th>
               <th>Year End Total</th>
@@ -24,7 +23,6 @@ export default function InvestmentTable({ chartData }) {
             {displayData.map((data) => (
               <tr key={data.year}>
                 <td>{data.year}</td>
-                <td>{data.principal}</td>
                 <td>{data.totalContribution}</td>
                 <td>{data.totalInterestEarned}</td>
                 <td>{data.yearEndTotal}</td>

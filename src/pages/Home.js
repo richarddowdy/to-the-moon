@@ -30,12 +30,14 @@ export default function Home() {
         Let's get started. Click <Link to="/test">Here</Link> to get started.
       </p>
       <Container fluid>
-        <Row>
+        <Row className="mb-5">
           <InputForm setInvestmentData={setInvestmentData} />
         </Row>
-        <Row>
-          <Col>{formattedData && <InvestmentChart chartData={formattedData} />}</Col>
-          <Col>
+        <Row className="mb-5">
+          <Col className="mx-auto" xs={12} lg={8}>
+            {formattedData && <InvestmentChart chartData={formattedData} />}
+          </Col>
+          <Col className="mx-auto" xs={12} lg={4}>
             {formattedData && (
               <InvestmentPie
                 chartData={formattedData[formattedData.length - 1]} /* only need the last year of data for pie chart */
@@ -43,7 +45,11 @@ export default function Home() {
             )}
           </Col>
         </Row>
-        <Row>{formattedData && <InvestmentTable chartData={formattedData} />}</Row>
+        <Row className="mb-5">
+          <Col className="mx-auto" xs={8}>
+            {formattedData && <InvestmentTable chartData={formattedData} />}
+          </Col>
+        </Row>
       </Container>
     </>
   );
