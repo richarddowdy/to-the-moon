@@ -30,7 +30,7 @@ export const calculateCompoundedInterestReturns = (
   let annualContribution = Number(contribution) * frequency;
   let annualTotalAfterInterest;
 
-  console.log(startingAmount, yearsHolding, annualReturnPercentage);
+  // console.log(startingAmount, yearsHolding, annualReturnPercentage);
 
   for (let i = 0; i <= yearsHolding; i++) {
     result.push({
