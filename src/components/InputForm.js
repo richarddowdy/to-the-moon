@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
+import { Form, Row, Col, Button } from "react-bootstrap";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
@@ -17,12 +17,8 @@ export default function InputForm({ setInvestmentData }) {
       <h2>Form here</h2>
       <Formik
         validationSchema={validationSchema}
-        onSubmit={(values, errors, isValidating, isValid) => {
+        onSubmit={(values) => {
           setInvestmentData(values);
-          console.log("Form submitted", values);
-          console.log("Form ERRORS", errors);
-          console.log("isValidating = ", isValidating);
-          console.log("IS VALID = ", isValid);
         }}
         initialValues={{
           principal: "",
@@ -43,8 +39,7 @@ export default function InputForm({ setInvestmentData }) {
                   value={values.principal}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  // isValid={touched.principal && !errors.principal}
-                  isInvalid={!!errors.principal}
+                  isInvalid={touched.principal && !!errors.principal}
                 />
                 <Form.Control.Feedback type="invalid">{errors.principal}</Form.Control.Feedback>
               </Form.Group>
@@ -56,8 +51,7 @@ export default function InputForm({ setInvestmentData }) {
                   value={values.duration}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  // isValid={touched.duration && !errors.duration}
-                  isInvalid={!!errors.duration}
+                  isInvalid={touched.duration && !!errors.duration}
                 />
                 <Form.Control.Feedback type="invalid">{errors.duration}</Form.Control.Feedback>
               </Form.Group>
@@ -69,8 +63,7 @@ export default function InputForm({ setInvestmentData }) {
                   defaultValue={values.frequency || null}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  // isValid={touched.frequency && !errors.frequency}
-                  isInvalid={!!errors.frequency}
+                  isInvalid={touched.frequency && !!errors.frequency}
                 >
                   <option value={null}>None</option>
                   <option value={26}>Every two weeks.</option>
@@ -90,9 +83,7 @@ export default function InputForm({ setInvestmentData }) {
                   value={values.contribution}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  isInvalid={!!errors.contribution}
-
-                  // isValid={touched.contribution && !errors.contribution}
+                  isInvalid={touched.contribution && !!errors.contribution}
                 />
                 <Form.Control.Feedback type="invalid">{errors.contribution}</Form.Control.Feedback>
               </Form.Group>
@@ -104,9 +95,7 @@ export default function InputForm({ setInvestmentData }) {
                   value={values.expectedInterest}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  isInvalid={!!errors.expectedInterest}
-
-                  // isValid={touched.expectedInterest && !errors.expectedInterest}
+                  isInvalid={touched.expectedInterest && !!errors.expectedInterest}
                 />
                 <Form.Control.Feedback type="invalid">{errors.expectedInterest}</Form.Control.Feedback>
               </Form.Group>
