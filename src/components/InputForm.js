@@ -1,14 +1,14 @@
 import React from "react";
 import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 import { Formik } from "formik";
-import * as yup from "yup";
+import * as Yup from "yup";
 
-const schema = yup.object().shape({
-  principal: yup.number().required(),
-  duration: yup.number().required(),
-  contribution: yup.number(),
-  expectedInterest: yup.number(),
-  frequency: yup.number(),
+const validationSchema = Yup.object().shape({
+  principal: Yup.number().required(),
+  duration: Yup.number().required(),
+  contribution: Yup.number(),
+  expectedInterest: Yup.number().required(),
+  frequency: Yup.string(),
 });
 
 export default function InputForm({ setInvestmentData }) {
@@ -16,17 +16,20 @@ export default function InputForm({ setInvestmentData }) {
     <>
       <h2>Form here</h2>
       <Formik
-        validationSchema={schema}
+        validationSchema={validationSchema}
+        onSubmit={(values, errors, isValidating, isValid) => {
+          setInvestmentData(values);
+          console.log("Form submitted", values);
+          console.log("Form ERRORS", errors);
+          console.log("isValidating = ", isValidating);
+          console.log("IS VALID = ", isValid);
+        }}
         initialValues={{
           principal: "",
           duration: "",
           contribution: "",
           expectedInterest: "",
           frequency: "",
-        }}
-        onSubmit={(values) => {
-          setInvestmentData(values);
-          console.log("Form submitted", values);
         }}
       >
         {({ values, touched, isValid, errors, handleSubmit, handleChange, handleBlur }) => (
@@ -39,9 +42,11 @@ export default function InputForm({ setInvestmentData }) {
                   name="principal"
                   value={values.principal}
                   onChange={handleChange}
-                  isValid={touched.principal && !errors.principal}
+                  onBlur={handleBlur}
+                  // isValid={touched.principal && !errors.principal}
+                  isInvalid={!!errors.principal}
                 />
-                <Form.Control.Feedback type="invalid">{errors.state}</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">{errors.principal}</Form.Control.Feedback>
               </Form.Group>
               <Form.Group className="mb-3" md="4" as={Col} controlId="validationFormik02">
                 <Form.Label>How Long do you plan on holding?</Form.Label>
@@ -50,9 +55,11 @@ export default function InputForm({ setInvestmentData }) {
                   name="duration"
                   value={values.duration}
                   onChange={handleChange}
-                  isValid={touched.duration && !errors.duration}
+                  onBlur={handleBlur}
+                  // isValid={touched.duration && !errors.duration}
+                  isInvalid={!!errors.duration}
                 />
-                <Form.Control.Feedback type="invalid">{errors.state}</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">{errors.duration}</Form.Control.Feedback>
               </Form.Group>
               <Form.Group className="mb-3" md="4" as={Col} controlId="validationFormik04">
                 <Form.Label>How often do you plan on contributing?</Form.Label>
@@ -62,7 +69,8 @@ export default function InputForm({ setInvestmentData }) {
                   defaultValue={values.frequency || null}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  isValid={touched.contribution && !errors.contribution}
+                  // isValid={touched.frequency && !errors.frequency}
+                  isInvalid={!!errors.frequency}
                 >
                   <option value={null}>None</option>
                   <option value={26}>Every two weeks.</option>
@@ -72,7 +80,7 @@ export default function InputForm({ setInvestmentData }) {
                   <option value={2}>Twice a year.</option>
                   <option value={1}>Once a year.</option>
                 </Form.Control>
-                <Form.Control.Feedback type="invalid">{errors.state}</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">{errors.frequency}</Form.Control.Feedback>
               </Form.Group>
               <Form.Group className="mb-3" md="4" as={Col} controlId="validationFormik03">
                 <Form.Label>How much do you plan on contributing?</Form.Label>
@@ -81,9 +89,12 @@ export default function InputForm({ setInvestmentData }) {
                   name="contribution"
                   value={values.contribution}
                   onChange={handleChange}
-                  isValid={touched.contribution && !errors.contribution}
+                  onBlur={handleBlur}
+                  isInvalid={!!errors.contribution}
+
+                  // isValid={touched.contribution && !errors.contribution}
                 />
-                <Form.Control.Feedback type="invalid">{errors.state}</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">{errors.contribution}</Form.Control.Feedback>
               </Form.Group>
               <Form.Group className="mb-3" md="4" as={Col} controlId="validationFormik03">
                 <Form.Label>Expected Anual Interest?</Form.Label>
@@ -92,12 +103,18 @@ export default function InputForm({ setInvestmentData }) {
                   name="expectedInterest"
                   value={values.expectedInterest}
                   onChange={handleChange}
-                  isValid={touched.expectedInterest && !errors.expectedInterest}
+                  onBlur={handleBlur}
+                  isInvalid={!!errors.expectedInterest}
+
+                  // isValid={touched.expectedInterest && !errors.expectedInterest}
                 />
-                <Form.Control.Feedback type="invalid">{errors.state}</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">{errors.expectedInterest}</Form.Control.Feedback>
               </Form.Group>
             </Row>
             <Button type="submit">Submit form</Button>
+            <Row>
+              <pre style={{ margin: "0 auto" }}>{JSON.stringify({ ...values, errors, isValid, touched }, null, 2)}</pre>
+            </Row>
           </Form>
         )}
       </Formik>
