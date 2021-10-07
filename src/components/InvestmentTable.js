@@ -1,4 +1,7 @@
+//React
 import React, { useState, useEffect } from "react";
+
+// Components
 import { Table } from "react-bootstrap";
 
 export default function InvestmentTable({ chartData }) {
