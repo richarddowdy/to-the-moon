@@ -1,10 +1,13 @@
+// React
 import React, { useState, useEffect } from "react";
+
+// Components
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 export default function InvestmentPie({ chartData }) {
   const [pieChartData, setPieChartData] = useState(null);
 
-  console.log("Pie Chart received: ", chartData);
+  // console.log("Pie Chart received: ", chartData);
   useEffect(() => {
     if (chartData) {
       const { principal, totalContribution, totalInterestEarned } = chartData;

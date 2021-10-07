@@ -5,7 +5,6 @@ export default function Navbar() {
   return (
     <>
       <Link to={"/"}>Home</Link>
-      <Link to={"/test"}>Test</Link>
     </>
   );
 }

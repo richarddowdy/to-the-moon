@@ -1,11 +1,16 @@
+// React
 import React, { useState, useEffect } from "react";
+
+// Components
 import { Link } from "react-router-dom";
-import InputForm from "../components/InputForm";
 import { Col, Container, Row } from "react-bootstrap";
+import InputForm from "../components/InputForm";
 import InvestmentChart from "../components/InvestmentChart";
 import InvestmentPie from "../components/InvestmentPie";
-import { calculateCompoundedInterestReturns } from "../utils/investmentHelpers";
 import InvestmentTable from "../components/InvestmentTable";
+
+// Helpers
+import { calculateCompoundedInterestReturns } from "../utils/investmentHelpers";
 
 export default function Home() {
   const [investmentData, setInvestmentData] = useState(null);
@@ -13,11 +18,10 @@ export default function Home() {
 
   useEffect(() => {
     if (investmentData) {
-      console.log("First", investmentData);
       const { principal, duration, contribution, expectedInterest, frequency } = investmentData;
 
       const fData = calculateCompoundedInterestReturns(principal, duration, expectedInterest, contribution, frequency);
-      console.log("what is this", fData);
+      // console.log("Formatted data", fData);
       setFormattedData(fData);
     }
   }, [investmentData]);

@@ -1,6 +1,11 @@
+//React
 import React from "react";
+
+// Components
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { Formik } from "formik";
+
+// Yup form validation
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
@@ -101,9 +106,6 @@ export default function InputForm({ setInvestmentData }) {
               </Form.Group>
             </Row>
             <Button type="submit">Submit form</Button>
-            <Row>
-              <pre style={{ margin: "0 auto" }}>{JSON.stringify({ ...values, errors, isValid, touched }, null, 2)}</pre>
-            </Row>
           </Form>
         )}
       </Formik>
