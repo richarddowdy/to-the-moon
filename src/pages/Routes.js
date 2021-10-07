@@ -3,12 +3,8 @@ import { Switch, Route, useLocation } from "react-router-dom";
 import Home from "../pages/Home";
 import Test from "../pages/Test";
 
-// function useQuery() {
-//   return new URLSearchParams(useLocation().search);
-// }
 
 function Routes() {
-  // const profile = useQuery().get("profile");
 
   return (
     <Switch>
