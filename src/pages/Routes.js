@@ -15,24 +15,6 @@ function Routes() {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route exact path="/test">
-        <Test />
-      </Route>
-      {/* <Route exact path="/posts/:id">
-        <PostContainer />
-      </Route>
-      <Route exact path="/user/:id">
-        <UserProfile />
-      </Route>
-      <PrivateRoute exact path="/new">
-        <NewPost />
-      </PrivateRoute>
-      <Route exact path="/login">
-        <LoginPage />
-      </Route>
-      <Route>
-        <NotFound />
-      </Route> */}
     </Switch>
   );
 }
