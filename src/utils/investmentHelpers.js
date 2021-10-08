@@ -1,17 +1,12 @@
-/*
-
-*/
-
 /* 
 function that takes principal investment, timeline, expected interest returned and returns an array of objects
 
-calculateCompoundedInterestReturns($1000, 3years, 10%) = [  
-  { year: 'Year 0', start:number, interestEarned:number, start+interestEarned:number}, $1000,   0, 1000  0th year (now)
-  { year: 'Year 1', start:number, interestEarned:number, start+interestEarned:number}, $1000, 100, 1100  1st year
-  { year: 'Year 2', start:number, interestEarned:number, start+interestEarned:number}, $1100, 110, 1210  2nd year
-  { year: 'Year 3', start:number, interestEarned:number, start+interestEarned:number}, $1210, 121, 1331  3rd year
+calculateCompoundedInterestReturns($1000, 3years, 1 contribution/month, $50/contribution, 10%) = [
+    { "year": "Year 0", "principal": 1000, "totalContribution": 0, "totalInterestEarned": 0, "yearEndTotal": 1000 },
+    { "year": "Year 1", "principal": 1000, "totalContribution": 600, "totalInterestEarned": 100, "interestEarned": 100, "yearEndTotal": 1700 },
+    { "year": "Year 2", "principal": 1000, "totalContribution": 1200, "totalInterestEarned": 270, "interestEarned": 170, "yearEndTotal": 2470 },
+    { "year": "Year 3", "principal": 1000, "totalContribution": 1800, "totalInterestEarned": 517, "interestEarned": 247, "yearEndTotal": 3317 }
 ]
-
 */
 
 export const calculateCompoundedInterestReturns = (
@@ -49,14 +44,9 @@ export const calculateCompoundedInterestReturns = (
     interestEarned = +(annualTotalAfterInterest - yearStartAmount).toFixed(2);
     totalInterestEarned = +(totalInterestEarned + interestEarned).toFixed(2);
   }
-  console.log(result);
+  // console.log("Investment Helper result:", result);
   return result;
 };
-
-// p = 1000 , c = 100@2xyearlycompounding , interest = 10% anually
-// {year: "Year 0", principal: 1000, contribution: 0, interestEarned: 0}
-// {year: "Year 1", principal: 1000, contribution: 200, interestEarned: 120, yearEndTotal: 1320}
-// {year: "Year 2", principal: 1000, contribution: 400, interestEarned: 152, yearEndTotal: 1672}
 
 /*
   Calculates annual simple interest - takes pricipal and percent interest

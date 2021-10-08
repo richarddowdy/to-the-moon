@@ -1,4 +1,7 @@
+// React
 import React, { useState, useEffect } from "react";
+
+// Components
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Legend, Tooltip, Bar } from "recharts";
 
 export default function InvestmentChart({ chartData }) {
@@ -7,7 +10,7 @@ export default function InvestmentChart({ chartData }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    console.log("bar render");
+    // console.log("bar render");
     if (chartData) setData(chartData);
   }, [chartData]);
 
