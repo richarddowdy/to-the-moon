@@ -18,7 +18,7 @@ export default function InvestmentChart({ chartData }) {
     <>
       {data && (
         <>
-          <h3 className="mb-4 mx-auto">{`Your original investment of $${principal} has turned into $${
+          <h3 className="mb-4 mx-auto" style={{fontSize: "1.25rem"}}>{`Your original investment of $${principal} has turned into $${
             data[data.length - 1].yearEndTotal
           }`}</h3>
           <ResponsiveContainer width="100%" height={300}>

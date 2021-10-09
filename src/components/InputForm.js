@@ -33,10 +33,10 @@ export default function InputForm({ setInvestmentData }) {
           frequency: "",
         }}
       >
-        {({ values, touched, isValid, errors, handleSubmit, handleChange, handleBlur }) => (
+        {({ values, touched, errors, handleSubmit, handleChange, handleBlur }) => (
           <Form noValidate className="mb-5" onSubmit={handleSubmit}>
             <Row className="mb-3">
-              <Form.Group className="mb-3" md="4" as={Col} controlId="validationFormik01">
+              <Form.Group className="mb-3" xs="12" sm="6" lg="4" as={Col} controlId="validationFormik01">
                 <Form.Label>Starting Investment</Form.Label>
                 <Form.Control
                   type="number"
@@ -48,7 +48,7 @@ export default function InputForm({ setInvestmentData }) {
                 />
                 <Form.Control.Feedback type="invalid">{errors.principal}</Form.Control.Feedback>
               </Form.Group>
-              <Form.Group className="mb-3" md="4" as={Col} controlId="validationFormik02">
+              <Form.Group className="mb-3" xs="12" sm="6" lg="4" as={Col} controlId="validationFormik02">
                 <Form.Label>How Long do you plan on holding?</Form.Label>
                 <Form.Control
                   type="number"
@@ -60,7 +60,7 @@ export default function InputForm({ setInvestmentData }) {
                 />
                 <Form.Control.Feedback type="invalid">{errors.duration}</Form.Control.Feedback>
               </Form.Group>
-              <Form.Group className="mb-3" md="4" as={Col} controlId="validationFormik04">
+              <Form.Group className="mb-3" xs="12" sm="6" lg="4" as={Col} controlId="validationFormik04">
                 <Form.Label>How often do you plan on contributing?</Form.Label>
                 <Form.Control
                   as="select"
@@ -80,7 +80,7 @@ export default function InputForm({ setInvestmentData }) {
                 </Form.Control>
                 <Form.Control.Feedback type="invalid">{errors.frequency}</Form.Control.Feedback>
               </Form.Group>
-              <Form.Group className="mb-3" md="4" as={Col} controlId="validationFormik03">
+              <Form.Group className="mb-3" xs="12" sm="6" lg="4" as={Col} controlId="validationFormik03">
                 <Form.Label>How much do you plan on contributing?</Form.Label>
                 <Form.Control
                   type="number"
@@ -92,7 +92,7 @@ export default function InputForm({ setInvestmentData }) {
                 />
                 <Form.Control.Feedback type="invalid">{errors.contribution}</Form.Control.Feedback>
               </Form.Group>
-              <Form.Group className="mb-3" md="4" as={Col} controlId="validationFormik03">
+              <Form.Group className="mb-3" xs="12" sm="6" lg="4" as={Col} controlId="validationFormik03">
                 <Form.Label>Expected Anual Interest?</Form.Label>
                 <Form.Control
                   type="number"

@@ -50,7 +50,7 @@ export default function Home() {
           </Col>
         </Row>
         <Row className="mb-5">
-          <Col className="mx-auto" xs={8}>
+          <Col className="mx-auto" xs={12} md={8}>
             {formattedData && <InvestmentTable chartData={formattedData} />}
           </Col>
         </Row>
