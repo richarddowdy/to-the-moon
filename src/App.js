@@ -11,10 +11,10 @@ import { Container } from "react-bootstrap";
 function App() {
   return (
     <BrowserRouter>
-      {/* <Container fluid> */}
+      <Container fluid>
         {/* <Navbar /> */}
         <Routes />
-      {/* </Container> */}
+      </Container>
     </BrowserRouter>
   );
 }

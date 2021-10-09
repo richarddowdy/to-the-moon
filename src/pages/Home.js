@@ -9,6 +9,9 @@ import InvestmentChart from "../components/InvestmentChart";
 import InvestmentPie from "../components/InvestmentPie";
 import InvestmentTable from "../components/InvestmentTable";
 
+// Styles
+import './Home.css'
+
 // Helpers
 import { calculateCompoundedInterestReturns } from "../utils/investmentHelpers";
 
@@ -28,11 +31,9 @@ export default function Home() {
 
   return (
     <>
-      <h1>This is the home page</h1>
+      <h1 className="mx-auto my-5 title" >&#128640; Build Your Rocket Ship &#128640;</h1>
 
-      <p>
-        Let's get started. Click <Link to="/test">Here</Link> to get started.
-      </p>
+
       <Container fluid>
         <Row className="mb-5">
           <InputForm setInvestmentData={setInvestmentData} />
