@@ -5,17 +5,17 @@ import "./App.css";
 // Components
 import Routes from "./pages/Routes";
 // import Navbar from "./components/Navbar";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Container } from "react-bootstrap";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Container fluid>
         {/* <Navbar /> */}
         <Routes />
       </Container>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
