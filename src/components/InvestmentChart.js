@@ -30,7 +30,7 @@ export default function InvestmentChart({ chartData }) {
               <XAxis dataKey="year" xAxisId={0} />
               <XAxis dataKey="year" xAxisId={1} hide />
               <YAxis />
-              <Tooltip />
+              <Tooltip formatter={(value, name) => `$${insertCommasHelper(value)}`}/>
               <Legend wrapperStyle={{ position: "relative" }} />
               <Bar dataKey="yearEndTotal" name="Total" xAxisId={1} fill="black" fillOpacity={0} />
               <Bar dataKey="principal" name="Principal" stackId="a" fill="#0088FE" />
