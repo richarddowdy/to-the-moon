@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 
 // Components
-import { Link } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import InputForm from "../components/InputForm";
 import InvestmentChart from "../components/InvestmentChart";
