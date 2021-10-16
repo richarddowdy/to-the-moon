@@ -4,6 +4,9 @@ import React, { useState, useEffect } from "react";
 // Components
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Legend, Tooltip, Bar } from "recharts";
 
+// Helpers
+import { insertCommasHelper } from "../utils/insertCommasHelper";
+
 export default function InvestmentChart({ chartData }) {
   // console.log("From chart", chartData);
   const principal = chartData[0].principal;
@@ -18,8 +21,8 @@ export default function InvestmentChart({ chartData }) {
     <>
       {data && (
         <>
-          <h3 className="mb-4 mx-auto" style={{fontSize: "1.25rem"}}>{`Your original investment of $${principal} has turned into $${
-            data[data.length - 1].yearEndTotal
+          <h3 className="mb-4 mx-auto" style={{fontSize: "1.25rem"}}>{`Your original investment of $${insertCommasHelper(principal)} has turned into $${
+            insertCommasHelper(data[data.length - 1].yearEndTotal)
           }`}</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart className="ml-2" data={data}>

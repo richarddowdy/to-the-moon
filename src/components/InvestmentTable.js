@@ -4,6 +4,9 @@ import React, { useState, useEffect } from "react";
 // Components
 import { Table } from "react-bootstrap";
 
+// Helpers
+import { insertCommasHelper } from "../utils/insertCommasHelper";
+
 export default function InvestmentTable({ chartData }) {
   const [displayData, setDisplayData] = useState(null);
 
@@ -26,9 +29,9 @@ export default function InvestmentTable({ chartData }) {
             {displayData.map((data) => (
               <tr key={data.year}>
                 <td>{data.year}</td>
-                <td>{data.totalContribution}</td>
-                <td>{data.totalInterestEarned}</td>
-                <td>{data.yearEndTotal}</td>
+                <td>{`$${insertCommasHelper(data.totalContribution)}`}</td>
+                <td>{`$${insertCommasHelper(data.totalInterestEarned)}`}</td>
+                <td>{`$${insertCommasHelper(data.yearEndTotal)}`}</td>
               </tr>
             ))}
           </tbody>
