@@ -4,6 +4,9 @@ import React, { useState, useEffect } from "react";
 // Components
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
+// Helpers
+import { insertCommasHelper } from "../utils/insertCommasHelper";
+
 export default function InvestmentPie({ chartData }) {
   const [pieChartData, setPieChartData] = useState(null);
 
@@ -53,7 +56,7 @@ export default function InvestmentPie({ chartData }) {
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
-            <Tooltip />
+            <Tooltip formatter={(value, name) => `$${insertCommasHelper(value)}`}/>
             <Legend />
           </PieChart>
         </ResponsiveContainer>
