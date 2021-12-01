@@ -15,4 +15,4 @@ if you are using a Linux machine. In order to do so, clone this repo and then ru
 
 Check out the live version here:
 
-- WIP
+- https://dowdy-to-the-moon.netlify.app/
